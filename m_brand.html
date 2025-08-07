@@ -151,7 +151,7 @@
   </script>
   <div id="wrap" class="">
 
-    <header id="header" class="bg_g" style=" padding: 10px 20px 10px 20px;">
+    <header id="header" class="bg_w" style=" padding: 10px 20px 10px 20px;">
       <div class="inner">
         <button type="button" id="btn_back">뒤로가기</button>
       </div>
@@ -159,10 +159,9 @@
         <h1 class="full_title"></h1>
       </div>
       <div class="inner">
-        <button type="button" id="btn_alarm" onclick="location.href='/display/alarm/form'">알림<span
-            class="count">0</span></button>
-        <button type="button" id="btn_cart" onclick="cfnGoToPage(_PAGE_CART);">장바구니<span class="count">0</span></button>
-      </div>
+				<button type="button" id="btn_search" onclick="cfnGoToPage(_PAGE_GOODS_SEARCH);">검색</button>
+				<button type="button" id="btn_alarm" onclick="location.href='/display/alarm/form'">알림<span class="count">4</span></button>
+			</div>
     </header>
 
     <!-- <div class="wrap-loading display-none">
@@ -790,31 +789,96 @@
       <div id="search_main" class="result">
         <div class="wrap">
           <div class="con">
-            <div class="title_box">
-              <div class="search_box" id="search">
-                <input type="text" name="searchTxt" id="gnbDefaultKeyword" placeholder="어떤 상품을 찾으세요?" maxlength="50"
-                  value="게스">
-                <input type="hidden" id="placeholderText" />
-                <input type="hidden" id="placeholderUrl" />
+            
 
-                <div class="icon_wrap">
-                  <button type="button" class="delete">삭제</button>
-                  <button type="button" class="search" onclick="fnSearchGoods('goods');">검색</button>
-
-
-
+            <div class="con_wrap">
+              <!-- 워드앤코드 영역 추가 -->
+              <div class="poster-wrap">
+                <div class="poster">
+                  <span>
+                    <img alt="이미지0" src="https://pre.thesquaremall.co.kr/ux/images/common/m-ex-img.jpg" />
+                  </span>
                 </div>
-
-
-                <div class="com_word">
-                  <ul id="autokeyword"></ul>
+                <div class="explain-box">
+                  <div class="txt-box">
+                    <p class="sub-tit">HAZZYS</p>
+                    <p class="tit">헤지스</p>
+                    <p class="txt">현재를 살아가는 사람들의 일상 속 행복한<br>
+                    순간에 떠오르는 브랜드입니다.</p>
+                    <p class="txt-more-btn">더보기</p>
+                  </div>
+                  <div class="link_wrap">
+                    <div class="wish_btn">
+                      <input class="input_none input_like" id="like" type="checkbox">
+                      <label id="wishBtn" class="like wish brandbtn " for="like" onclick="cfnPutWishList(this,event); return false;" data-goodscd="SQE000995779" data-plandtlsq=""><span>좋아요</span></label>
+                      <div class="share">
+                        <button type="button" class="share_btn">공유하기</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-box">
+                    <div class="swiper-container brand_thumb_swiper">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide goods-slide">
+                          <img alt="이미지0" src="https://pre.thesquaremall.co.kr/ux/images/common/brand-thumb-ex-img.jpg" />
+                          <p class="brand_thumb-txt">헤지스 멤버스 15%할인 혜택</p>
+                        </div>
+                        <div class="swiper-slide goods-slide">
+                          <img alt="이미지1" src="https://pre.thesquaremall.co.kr/ux/images/common/brand-thumb-ex-img.jpg" />
+                          <p class="brand_thumb-txt">헤지스 멤버스 15%할인 혜택</p>
+                        </div>
+                      </div>
+                      <div class="swiper-button-prev"></div>
+                      <div class="swiper-button-next"></div>
+                    </div>
+                    
+                  </div>
                 </div>
               </div>
-              <!-- 연관검색어 -->
-
-
-            </div>
-            <div class="con_wrap">
+              <div class="center-cate-list">
+                <ul>
+                  <li class="active">
+                    <button type="button"><span>아우터</span></button>
+                  </li>
+                  <li>
+                    <button type="button"><span>상의</span></button>
+                  </li>
+                  <li>
+                    <button type="button"><span>팬츠</span></button>
+                  </li>
+                  <li>
+									<button type="button"><span>가방</span></button>
+								</li>
+								<li>
+									<button type="button"><span>스커트</span></button>
+								</li>
+								<li>
+									<button type="button"><span>상의</span></button>
+								</li>
+								<li>
+									<button type="button"><span>팬츠</span></button>
+								</li>
+								<li>
+									<button type="button"><span>가방</span></button>
+								</li>
+								<li>
+									<button type="button"><span>스커트</span></button>
+								</li>
+							</ul>
+						  </div>
+              <div class="mid-search_area">
+                <div class="search-tit">
+                  <h1>브랜드 내 상품 검색</h1>
+                </div>
+                <div class="sorting_search" id="search">
+                  <input type="text" placeholder="">
+                  <p class="placeholder"><b>헤지스</b> 상품을 검색해보세요.</p>
+                  <div class="icon_wrap">
+                    <button type="button" class="search">검색</button>
+                  </div>
+                </div>
+              </div>
+						  <!-- //워드앤코드 영역 추가 -->
               <div class="search_return">
                 <div class="sort01 tabmenu">
                   <ul>
@@ -2263,7 +2327,7 @@
 
       var sortGb = "";
 
-      $(".full_title").html('검색결과');
+      $(".full_title").html('헤지스');
       //$("#header").removeClass('bg_w');
       //$("#header").addClass('bg_b');
       $("#header").addClass("searchResult_header");
@@ -4890,5 +4954,20 @@ a.src=b;a.async="true";d.appendChild(a)}function dsp_load_rtg(b){dsp_loadrtgJS((
 
   </div>
 </body>
+<!-- 워드앤코드 코드 추가 -->
+<script>
+	 var mySwiper = new Swiper ('.brand_thumb_swiper', {
+		// If we need pagination
+		loop: true,
+		slidesPerView: 2,
+    spaceBetween: 9,
+		// Navigation arrows
+		navigation: {
+		nextEl: '.brand_thumb_swiper .swiper-button-next',
+		prevEl: '.brand_thumb_swiper .swiper-button-prev',
+		},
 
+	})
+</script>
+<!-- //워드앤코드 영역 추가 -->
 </html>

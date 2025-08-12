@@ -984,8 +984,8 @@
 
 
 
-              <!-- MD 추천 끝 -->
-              <div class="main_product_roll_section" id="mon-keyword">
+              <!-- MD 추천 시작 -->
+              <div class="main_product_roll_section" id="md-keyword">
     <div class="roll_section-inner">
       <div class="rank-event-list slide-tabs">
         <h3 class="title mb-31">
@@ -2059,7 +2059,7 @@
           </div>
         </div>
 
-        <!-- 이달의 키워드 끝 -->
+        <!-- MD 추천 끝 -->
 
         <!-- mainLayoutData.goodsList -->
 
@@ -15133,6 +15133,70 @@
           });
         }
       }
+
+      // Swiper 인스턴스 관리
+      let keywordSlider = null;
+
+      document.querySelectorAll('#md-keyword .slide-tabs').forEach(tabGroup => {
+        const buttons = tabGroup.querySelectorAll('.slide-tab-button');
+        const contents = tabGroup.querySelectorAll('.slide-tab-content');
+
+        buttons.forEach(button => {
+          button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-tab');
+
+            // 탭 활성화 처리
+            buttons.forEach(btn => btn.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            button.classList.add('active');
+            const targetContent = tabGroup.querySelector('#' + targetId);
+            targetContent.classList.add('active');
+
+            // Swiper 새로 생성 (탭 누를 때마다 새로 생성하여 카운팅 새로고침)
+            if (keywordSlider) {
+              keywordSlider.destroy(true, true); // 기존 인스턴스 제거
+            }
+
+            keywordSlider = new Swiper('#' + targetId + ' .keyword-slide-wrap', {
+              slidesPerView: 'auto',
+              freeMode: true,
+              pagination: {
+                el: '.swiper-230-pagination',
+                type: 'custom',
+                renderCustom: function (swiper, current, total) {
+                  const cur = String(current).padStart(2, '0');
+                  const tot = String(total).padStart(2, '0');
+                  return '<span class="current">' + cur + '</span> | <span class="total">' + tot + '</span>';
+                }
+              }
+            });
+          });
+        });
+
+        // 초기 탭 Swiper 생성
+        const initialButton = tabGroup.querySelector('#mon-keyword .slide-tab-button.active');
+        if (initialButton) {
+          const targetId = initialButton.getAttribute('data-tab');
+          const targetContent = tabGroup.querySelector('#' + targetId);
+          targetContent.classList.add('active');
+
+          keywordSlider = new Swiper('#' + targetId + ' .keyword-slide-wrap', {
+            slidesPerView: 'auto',
+            freeMode: true,
+            pagination: {
+              el: '.swiper-230-pagination',
+              type: 'custom',
+              renderCustom: function (swiper, current, total) {
+                const cur = String(current).padStart(2, '0');
+                const tot = String(total).padStart(2, '0');
+                return '<span class="current">' + cur + '</span> | <span class="total">' + tot + '</span>';
+              }
+            }
+          });
+        }
+      });
+
     </script>
 
     <!-- 광고 스크립트 -->

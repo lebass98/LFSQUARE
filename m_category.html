@@ -7951,10 +7951,10 @@
                                   step="1000" value="1130000" data-filter="add"
                                   onchange="javascript:setPriceRange(this);" />
                               </div>
-                              <div class="range-minmax">
+                              <!-- <div class="range-minmax">
                                 <span class="price_range_min">0원</span>
                                 <span class="price_range_max">1130000원</span>
-                              </div>
+                              </div> -->
                             </div>
                             <!-- 가격 input -->
                              <div class="price_input_wrap">
@@ -13466,147 +13466,122 @@
             });
           }
 
-          //range from to 검색값 바인딩 후 한 번 호출해줄 것
-          function initPriceRange(max, from = 0, to) {
-            const priceRange = document.querySelector(".price_range");
-            const priceRangeFrom = priceRange.querySelector(".price_range_from");
-            const priceRangeTo = priceRange.querySelector(".price_range_to");
-            const priceRangeMin = priceRange.querySelector(".price_range_min");
-            const priceRangeMax = priceRange.querySelector(".price_range_max");
-            const priceRangeText = priceRange.querySelector(".price_range_text");
-            const selected = priceRange.querySelector(".range-selected");
 
-            if (!to) to = max;
-            const min = 0;
+// range 슬라이더와 input, 그리고 시각적 요소를 가져옵니다.
+const priceRangeFrom = document.querySelector(".price_range_from");
+const priceRangeTo = document.querySelector(".price_range_to");
+const priceInputStart = document.getElementById("sprice");
+const priceInputEnd = document.getElementById("eprice");
+const selected = document.querySelector(".range-selected");
+const priceRangeText = document.querySelector(".price_range_text");
+const priceRangeMin = document.querySelector(".price_range_min");
+const priceRangeMax = document.querySelector(".price_range_max");
 
-            priceRangeFrom.min = 0;
-            priceRangeFrom.max = max;
-            priceRangeFrom.step = 1000;
-            priceRangeFrom.value = from;
-            priceRangeTo.min = 0;
-            priceRangeTo.max = max;
-            priceRangeTo.step = 1000;
-            priceRangeTo.value = to;
-            //표시는 initPriceRange,setPriceRange동일
-            priceRangeMin.textContent = formatComma(min) + "원";
-            priceRangeMax.textContent = formatComma(max) + "원";
-            if (priceRangeFrom.value == 0 && priceRangeTo.value == max) {
-              priceRangeText.textContent = "(전체)";
+// 가격 형식을 10,000원 단위로 올림하여 "10,000원" 형식으로 변환하는 함수
+function formatPriceInTenThousands(price) {
+  // 10,000으로 나눈 후 올림 (ceil)하여 10,000원 단위로 맞춤
+  const roundedPrice = Math.ceil(price / 10000) * 10000;
+  return new Intl.NumberFormat("ko-KR").format(roundedPrice) + "원";
+}
 
-              $('#searchForm input[name=minPriceSearch]').val('');
-              $('#searchForm input[name=maxPriceSearch]').val('');
-            } else {
-              priceRangeText.textContent = formatComma(from) + " ~ " + formatComma(to) + "원";
-            }
-            const rtFrom = (from / max) * 100;
-            const rtTo = (to / max) * 100;
-            selected.style.left = rtFrom + "%";
-            selected.style.width = rtTo - rtFrom + "%";
-          }
+// 텍스트 input의 값이 변경될 때 슬라이더를 업데이트하는 함수
+function updateRangeFromInput() {
+  // 텍스트에서 '원'과 쉼표를 제거하고 숫자로 변환
+  let minVal = Number(priceInputStart.value.replace(/,/g, '').replace('원', ''));
+  let maxVal = Number(priceInputEnd.value.replace(/,/g, '').replace('원', ''));
 
-          function setPriceRange(obj) {
-            if (!obj) return;
-            const priceRange = obj.closest(".price_range");
-            const priceRangeFrom = priceRange.querySelector(".price_range_from");
-            const priceRangeTo = priceRange.querySelector(".price_range_to");
-            const priceRangeMin = priceRange.querySelector(".price_range_min");
-            const priceRangeMax = priceRange.querySelector(".price_range_max");
-            const priceRangeText = priceRange.querySelector(".price_range_text");
-            const selected = priceRange.querySelector(".range-selected");
-            let from = Number.parseInt(priceRangeFrom.value);
-            let to = Number.parseInt(priceRangeTo.value);
-            if (from > to) {
-              priceRangeFrom.value = to;
-              priceRangeTo.value = from;
-              setPriceRange(obj);
-              return;
-            }
-            const max = Number.parseInt(priceRangeFrom.max);
-            const min = Number.parseInt(priceRangeFrom.min);
-            //표시는 initPriceRange,setPriceRange동일
-            priceRangeMin.textContent = formatComma(min) + "원";
-            priceRangeMax.textContent = formatComma(max) + "원";
-            if (priceRangeFrom.value == 0 && priceRangeTo.value == max) {
-              priceRangeText.textContent = "(전체)";
-              $('#filter_price_pick').empty();
-              $('#searchForm input[name=minPriceSearch]').val('');
-              $('#searchForm input[name=maxPriceSearch]').val('');
-            } else {
-              priceRangeText.textContent = formatComma(from) + " ~ " + formatComma(to) + "원";
-              priceRangeTo.value = to;
-              priceRangeFrom.value = from;
+  // 입력된 값이 숫자가 아니거나 비어있으면 초기값으로 설정
+  if (isNaN(minVal)) minVal = 0;
+  if (isNaN(maxVal)) maxVal = priceRangeTo.max;
 
-              $('#filter_price').addClass('active');
-              $('#filter_price_pick').html('<div><span id="filter_price_pick_text">' + $('.price_range_text').text() + '</span><em class="filter_close"></em></div>');
+  // 최소값이 최대값보다 크면 두 값을 교체
+  if (minVal > maxVal) {
+    [minVal, maxVal] = [maxVal, minVal];
+  }
 
-              $('#searchForm input[name=minPriceSearch]').val(from);
-              $('#searchForm input[name=maxPriceSearch]').val(to);
-            }
-            const rtFrom = (from / max) * 100;
-            const rtTo = (to / max) * 100;
-            selected.style.left = rtFrom + "%";
-            selected.style.width = rtTo - rtFrom + "%";
+  // 슬라이더 값 업데이트
+  priceRangeFrom.value = minVal;
+  priceRangeTo.value = maxVal;
 
-            jfFilterCount();
-          }
+  // 슬라이더의 시각적 표시 업데이트
+  updateSliderVisual(minVal, maxVal);
+  updatePriceText(minVal, maxVal);
+}
 
-          $('#filter_price_pick').on('click', function () {
-            $('#filter_price_pick').empty();
-            const div = $('#filter_price_pick');
-            const spanCount = div.find('span').length;
-            if (spanCount == 0) {
-              $('#filter_price').removeClass('active');
-            }
+// 슬라이더의 값이 변경될 때 텍스트 input과 시각적 요소를 업데이트하는 함수
+function updateAllFromRange() {
+  let from = Number(priceRangeFrom.value);
+  let to = Number(priceRangeTo.value);
+  
+  // 슬라이더가 서로 만났을 때 더 이상 움직이지 않도록 처리
+  if (from >= to) {
+    // 움직인 슬라이더가 'from' 슬라이더인 경우
+    if (this === priceRangeFrom) {
+      priceRangeFrom.value = to;
+    } 
+    // 움직인 슬라이더가 'to' 슬라이더인 경우
+    else if (this === priceRangeTo) {
+      priceRangeTo.value = from;
+    }
+    from = Number(priceRangeFrom.value);
+    to = Number(priceRangeTo.value);
+  }
 
-            $('#searchForm input[name=minPriceSearch]').val('');
-            $('#searchForm input[name=maxPriceSearch]').val('');
+  // 텍스트 input 값 업데이트
+  priceInputStart.value = formatPriceInTenThousands(from);
+  priceInputEnd.value = formatPriceInTenThousands(to);
 
-            jfFilterCount();
+  // 슬라이더의 시각적 표시 업데이트
+  updateSliderVisual(from, to);
+  updatePriceText(from, to);
+}
 
-            //가격 필터
-            initPriceRange(1130000);
-          });
+// 슬라이더의 시각적 표시(range-selected)를 업데이트하는 함수
+function updateSliderVisual(from, to) {
+  const max = Number(priceRangeFrom.max);
+  const rtFrom = (from / max) * 100;
+  const rtTo = (to / max) * 100;
+  selected.style.left = rtFrom + "%";
+  selected.style.width = rtTo - rtFrom + "%";
+}
 
-          $(document).on('click', '#filter_item_list ul li:not(:first)', function () {
-            var text = $(this).find('span').text();
-            var sId = $(this).find('span').attr('id');
+// 가격 텍스트(예: (전체) 또는 10,000원 ~ 50,000원)를 업데이트하는 함수
+function updatePriceText(from, to) {
+  const max = Number(priceRangeFrom.max);
+  if (from == 0 && to == max) {
+    priceRangeText.textContent = "(전체)";
+  } else {
+    priceRangeText.textContent = formatPriceInTenThousands(from) + " ~ " + formatPriceInTenThousands(to);
+  }
+}
 
-            if (sId.indexOf('price') > 0) {
-              //가격필터
-              $('#filter_price_pick').click();
-            } else {
-              ['size', 'season', 'sale', 'seller', 'brand'].forEach(type => {
+// 초기 로드 시 값 설정
+document.addEventListener('DOMContentLoaded', () => {
+  const initialMin = Number(priceRangeFrom.min);
+  const initialMax = Number(priceRangeFrom.max);
+  
+  // input에 표시되는 금액은 원 단위로 변경
+  priceInputStart.value = formatPriceInTenThousands(initialMin);
+  priceInputEnd.value = formatPriceInTenThousands(initialMax);
 
-                $('#filter_' + type + '_list label input:checked').each(function () {
-                  var text2 = $(this).siblings('span').text();
-                  if (text == text2) {
-                    var name = $(this).attr('name');
-                    var value = $(this).val();
-                    console.log(name);
-                    $('#searchForm input[name=' + name + 'Search]').remove();
+  // 슬라이더 아래 최소/최대 금액도 원 단위로 변경
+  priceRangeMin.textContent = formatPriceInTenThousands(initialMin);
+  priceRangeMax.textContent = formatPriceInTenThousands(initialMax);
 
-                    $(this).prop('checked', false).trigger('change');
-                  }
-                });
+  updateSliderVisual(Number(priceRangeFrom.value), Number(priceRangeTo.value));
+  updatePriceText(Number(priceRangeFrom.value), Number(priceRangeTo.value));
+});
 
-                if (type === 'brand' && $('.brand_search_wrap input').val().length > 0) {
-                  $('.brand_search_wrap input').val('');
-                  showFilteredBrandList();
-                }
-              });
-            }
+// 이벤트 리스너를 추가합니다.
+// 슬라이더의 값이 변경될 때
+priceRangeFrom.addEventListener('input', updateAllFromRange);
+priceRangeTo.addEventListener('input', updateAllFromRange);
+priceRangeFrom.addEventListener('change', updateAllFromRange);
+priceRangeTo.addEventListener('change', updateAllFromRange);
 
-            var cntNum = $("#filter_item_list li").length;
-            if (cntNum == 1) {
-              $("#filter_item_list .filter-reset-btn").css('display', 'none');
-            }
-
-            $('.filter-tabs li:first').click();
-
-            $(this).remove();
-
-            fnFilterSearch();
-          });
+// 텍스트 input의 값이 변경될 때
+priceInputStart.addEventListener('change', updateRangeFromInput);
+priceInputEnd.addEventListener('change', updateRangeFromInput);
         </script>
       </body>
 

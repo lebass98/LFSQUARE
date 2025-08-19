@@ -13469,6 +13469,7 @@
           }
 
         /* 워드앤코드 코드 추가 */
+        const rangeWrapper = document.querySelector(".range-wrapper");
         const priceRangeFrom = document.querySelector(".price_range_from");
         const priceRangeTo = document.querySelector(".price_range_to");
         const priceInputStart = document.getElementById("sprice");
@@ -13479,7 +13480,7 @@
         const priceRangeMax = document.querySelector(".price_range_max");
 
         const formatPrice = v => new Intl.NumberFormat("ko-KR").format(Math.ceil(v / 10000) * 10000) + "원";
-        const formatPlain = v => new Intl.NumberFormat("ko-KR").format(Math.ceil(v / 10000) * 10000); // 원 없는 버전
+        const formatPlain = v => new Intl.NumberFormat("ko-KR").format(Math.ceil(v / 10000) * 10000);
 
         let initialMin, initialMax;
 
@@ -13488,7 +13489,7 @@
           const min = +priceRangeFrom.min;
 
           from = Math.min(Math.max(min, from), max);
-          to   = Math.min(Math.max(min, to), max);
+          to = Math.min(Math.max(min, to), max);
           if (from > to) [from, to] = [to, from];
 
           priceRangeFrom.value = from;
@@ -13518,7 +13519,7 @@
           updateUI(initialMin, initialMax);
         });
 
-        // ✅ range 이벤트: 드래그, click, change 모두 처리
+        // 기존 range 이벤트
         [priceRangeFrom, priceRangeTo].forEach(r => {
           ["input", "change", "click"].forEach(evt =>
             r.addEventListener(evt, () => updateUI(+priceRangeFrom.value, +priceRangeTo.value))
@@ -13533,14 +13534,31 @@
               +priceInputEnd.value.replace(/[^\d]/g, "") || initialMax
             );
           });
+          i.addEventListener("focus", () => { i.value = i.value.replace(/[^\d]/g, ""); });
+          i.addEventListener("blur", () => { if(i.value) i.value = formatPrice(+i.value.replace(/[^\d]/g, "")); });
+        });
 
-          i.addEventListener("focus", () => {
-            i.value = i.value.replace(/[^\d]/g, "");
-          });
+        // =====================================
+        // 트랙 클릭 시 가장 가까운 range 이동
+        rangeWrapper.addEventListener("click", e => {
+          const rect = rangeWrapper.getBoundingClientRect();
+          const clickX = e.clientX - rect.left; // 클릭 위치
+          const trackWidth = rect.width;
 
-          i.addEventListener("blur", () => {
-            if (i.value) i.value = formatPrice(+i.value.replace(/[^\d]/g, ""));
-          });
+          const max = +priceRangeFrom.max;
+          const clickedValue = Math.round((clickX / trackWidth) * max / 1000) * 1000; // step 맞춤
+
+          // 현재 슬라이더 값과 거리 계산
+          const distFrom = Math.abs(priceRangeFrom.value - clickedValue);
+          const distTo = Math.abs(priceRangeTo.value - clickedValue);
+
+          if (distFrom < distTo) {
+            priceRangeFrom.value = clickedValue;
+          } else {
+            priceRangeTo.value = clickedValue;
+          }
+
+          updateUI(+priceRangeFrom.value, +priceRangeTo.value);
         });
 
         /* //워드앤코드 코드 추가 */

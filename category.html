@@ -4133,23 +4133,37 @@
 
                     <li class="filter price_cate">
                       <div class="accodion_tit">
-                        <h3>가격</h3><span>펼치기</span>
+                        <h3>가격 및 할인</h3><span>펼치기</span>
                       </div>
+                      <!-- 워드앤코드 영역 추가 -->
                       <div class="accodion_con price_range">
-                        <p>최종가격 <span class="price_range_text">(전체)</span></p>
+                        <p>최종가격
+                          <!--<span class="price_range_text">(전체)</span>-->
+                        </p>
                         <div class="range-wrapper">
                           <div class="range-track"></div>
                           <div class="range-selected"></div>
-                          <input type="range" class="price_range_from" name="minPrice" min="0" max="2590000" step="1000"
-                            value="0" data-filter="add" onchange="javascript:setPriceRange(this);" />
-                          <input type="range" class="price_range_to" name="maxPrice" min="0" max="2590000" step="1000"
-                            value="2590000" data-filter="add" onchange="javascript:setPriceRange(this);" />
+                          <input type="range" class="price_range_from" name="minPrice" min="0" max="1130000"
+                            step="1000" value="0" data-filter="add" onchange="javascript:setPriceRange(this);" />
+                          <input type="range" class="price_range_to" name="maxPrice" min="0" max="1130000"
+                            step="1000" value="1130000" data-filter="add"
+                            onchange="javascript:setPriceRange(this);" />
                         </div>
-                        <div class="range-minmax">
-                          <span class="price_range_min">0원</span>
-                          <span class="price_range_max">2590000원</span>
+                        
+                        <!-- 가격 input -->
+                        <div class="price_input_wrap">
+                          <div class="price_input_start">
+                            <input type="text" class="price_input" id="sprice" placeholder="0">
+                          </div>
+                          <span class="tilde">~</span>
+                          <div class="price_input_end">
+                            <input type="text" class="price_input" id="eprice" placeholder="10,000,000">
+                          </div>
                         </div>
+                        <!-- 가격 input -->
                       </div>
+                      
+                      <!-- //워드앤코드 영역 추가 -->
                     </li>
 
 
@@ -9066,6 +9080,103 @@
 
 
       })(window, document, 'ttq');
+
+
+      /* 워드앤코드 코드 추가 */
+      const rangeWrapper = document.querySelector(".range-wrapper");
+      const priceRangeFrom = document.querySelector(".price_range_from");
+      const priceRangeTo = document.querySelector(".price_range_to");
+      const priceInputStart = document.getElementById("sprice");
+      const priceInputEnd = document.getElementById("eprice");
+      const selected = document.querySelector(".range-selected");
+      const priceRangeText = document.querySelector(".price_range_text");
+      const priceRangeMin = document.querySelector(".price_range_min");
+      const priceRangeMax = document.querySelector(".price_range_max");
+
+      const formatPrice = v => new Intl.NumberFormat("ko-KR").format(Math.ceil(v / 10000) * 10000) + "원";
+      const formatPlain = v => new Intl.NumberFormat("ko-KR").format(Math.ceil(v / 10000) * 10000);
+
+      let initialMin, initialMax;
+
+      function updateUI(from, to) {
+        const max = +priceRangeFrom.max;
+        const min = +priceRangeFrom.min;
+
+        from = Math.min(Math.max(min, from), max);
+        to = Math.min(Math.max(min, to), max);
+        if (from > to) [from, to] = [to, from];
+
+        priceRangeFrom.value = from;
+        priceRangeTo.value = to;
+
+        priceInputStart.value = from === initialMin ? "" : formatPrice(from);
+        priceInputEnd.value   = to === initialMax ? "" : formatPrice(to);
+
+        const changed = (from !== initialMin || to !== initialMax);
+        priceInputStart.classList.toggle("active", changed);
+        priceInputEnd.classList.toggle("active", changed);
+
+        selected.style.left = (from / max) * 100 + "%";
+        selected.style.width = (to / max) * 100 - (from / max) * 100 + "%";
+        priceRangeText.textContent = (from === min && to === max) ? "(전체)" : `${formatPrice(from)} ~ ${formatPrice(to)}`;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initialMin = +priceRangeFrom.min;
+        initialMax = +priceRangeFrom.max;
+
+        priceInputStart.placeholder = formatPlain(initialMin);
+        priceInputEnd.placeholder   = formatPlain(initialMax);
+
+        priceRangeMin.textContent = formatPrice(initialMin);
+        priceRangeMax.textContent = formatPrice(initialMax);
+        updateUI(initialMin, initialMax);
+      });
+
+      // 기존 range 이벤트
+      [priceRangeFrom, priceRangeTo].forEach(r => {
+        ["input", "change", "click"].forEach(evt =>
+          r.addEventListener(evt, () => updateUI(+priceRangeFrom.value, +priceRangeTo.value))
+        );
+      });
+
+      // price input 이벤트
+      [priceInputStart, priceInputEnd].forEach(i => {
+        i.addEventListener("change", () => {
+          updateUI(
+            +priceInputStart.value.replace(/[^\d]/g, "") || 0,
+            +priceInputEnd.value.replace(/[^\d]/g, "") || initialMax
+          );
+        });
+        i.addEventListener("focus", () => { i.value = i.value.replace(/[^\d]/g, ""); });
+        i.addEventListener("blur", () => { if(i.value) i.value = formatPrice(+i.value.replace(/[^\d]/g, "")); });
+      });
+
+      // =====================================
+      // 트랙 클릭 시 가장 가까운 range 이동
+      rangeWrapper.addEventListener("click", e => {
+        const rect = rangeWrapper.getBoundingClientRect();
+        const clickX = e.clientX - rect.left; // 클릭 위치
+        const trackWidth = rect.width;
+
+        const max = +priceRangeFrom.max;
+        const clickedValue = Math.round((clickX / trackWidth) * max / 1000) * 1000; // step 맞춤
+
+        // 현재 슬라이더 값과 거리 계산
+        const distFrom = Math.abs(priceRangeFrom.value - clickedValue);
+        const distTo = Math.abs(priceRangeTo.value - clickedValue);
+
+        if (distFrom < distTo) {
+          priceRangeFrom.value = clickedValue;
+        } else {
+          priceRangeTo.value = clickedValue;
+        }
+
+        updateUI(+priceRangeFrom.value, +priceRangeTo.value);
+      });
+
+
+        /* //워드앤코드 코드 추가 */
     </script>
     <!-- 틱톡 TikTok End -->
 
@@ -9083,18 +9194,20 @@ function loadanalJS_dsp(b,c){var d=document.getElementsByTagName("head")[0],a=do
 a.src=b;a.async="true";d.appendChild(a)}function loadanal_dsp(b){loadanalJS_dsp(("https:"==document.location.protocol?"https://":"http://")+b,"UTF-8");document.write("<span id=dsp_spn style=display:none;></span>");}
 loadanal_dsp("tk.realclick.co.kr/tk_comm.js?dspu="+dspu+"&dspt="+dspt+"&dspo="+dspo+"&dspom="+dspom);
 </script>
-<!-- Tracking Script End 2.0 -->
+Tracking Script End 2.0 -->
 
     <!-- DSP 리타겟팅 Checking Script V.201603 Start
 	<script type="text/javascript" async="true">
 function dsp_loadrtgJS(b,c){var d=document.getElementsByTagName("head")[0],a=document.createElement("script");a.type="text/javascript";null!=c&&(a.charset="euc-kr");
 a.src=b;a.async="true";d.appendChild(a)}function dsp_load_rtg(b){dsp_loadrtgJS(("https:"==document.location.protocol?" https://":" http://")+b,"euc-kr")}dsp_load_rtg("realdmp.realclick.co.kr/rtarget/rtget.js?dsp_adid=pastelmall");
 </script>
-<!-- DSP 리타겟팅 Checking Script V.201603 End-->
+DSP 리타겟팅 Checking Script V.201603 End-->
 
     <!-- // 광고 스크립트 -->
 
   </div>
+
+  
 </body>
 
 </html>

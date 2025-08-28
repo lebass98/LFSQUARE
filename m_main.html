@@ -39910,6 +39910,26 @@ var real_core=function(){return{onload:function(p){var le='(';var ri=')';var e=e
 
 
 
+  <!-- 20250828 라이브방송 active js 추가 -->
+   <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const thumbsBoxes = document.querySelectorAll(".thumbs-box");
+
+    thumbsBoxes.forEach(function (box) {
+      box.addEventListener("click", function () {
+        // 기존 active 제거
+        document.querySelectorAll(".thumbs-box.active").forEach(function (activeBox) {
+          activeBox.classList.remove("active");
+        });
+
+        // 클릭된 요소에 active 추가
+        this.classList.add("active");
+      });
+    });
+  });
+</script>
+  <!-- 20250828 라이브방송 active js 추가 -->
+
   <script>
     var userAppVersion = "";
     $(document).ready(function () {

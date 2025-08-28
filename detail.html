@@ -2734,153 +2734,145 @@ $('.del_all').on('click', function(){
 					</li>
 				</ul>
 			</div>
+			<!--워드앤코드 영역 묶음-->
+			<div class="option-area">
+				<div class="opt_wrap">
+					<div class="opt_box packopt">
+						<div class="opt_tit">옵션</div>
+						<div class="option">
+							<div class="pack_goods">
+								<button type="button" class="pack_btn">선택</button>
+								<ul class="option_list">
+										<li data-goodscd="SQE001679039" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="49000" data-goodsnm="아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062" data-iscoupon="Y" data-iscouponsize="1" data-mastercurrprice="49000" data-issoldout="" class="">
+											<input type="radio" name="option" id="option_1">
+											<label class="select_option" for="option_1">
+												<p>
+													
+													[아디다스] 아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062
+												</p>
+												<span class="add">
+													<span>
+														+
+														0원
+													</span>원 
+												</span>
+											</label>
+										</li>
+										<li data-goodscd="SQE001679040" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="89000" data-goodsnm="아디다스 아디제로 BK 남성 경량 러닝화 JP6528" data-iscoupon="N" data-iscouponsize="0" data-mastercurrprice="49000" data-issoldout="" class="">
+											<input type="radio" name="option" id="option_2">
+											<label class="select_option" for="option_2">
+												<p>
+													
+													[아디다스] 아디다스 아디제로 BK 남성 경량 러닝화 JP6528
+												</p>
+												<span class="add">
+													<span>
+														+
+														40,000원
+													</span>원 
+												</span>
+											</label>
+										</li>
+									
+								</ul>
+							</div>
+							<div class="errortxt">옵션을 선택해 주세요</div>
+						</div>
+					</div>
+					<div class="opt_box poption" style="display: none;">
+						<div class="opt_tit">사이즈</div>
+						<div class="option">
+							<div class="pack_goods">
+								<button type="button" class="pack_btn">선택</button>
+								<ul class="uoption" id="opt1" fnkey="choiceOpt" idx="1" minordqty="1" maxordqty="10" iscoupon="N" goodsnm="아디다스 아디제로 BK 남성 경량 러닝화 JP6528" iscouponsize="0" mastercurrprice="49000" style="height: 0px; border-bottom: 0px none; transition: height; overflow-y: auto;">
+								</ul>
+							</div>
+							<div class="errortxt">사이즈를 선택해 주세요</div>
+						</div>
+					</div>
+				</div>
+				<div class="item_amount">
+				<span class="tit">세트수량</span>
+				<div class="count_btn">
+						<button type="button" id="minus_one" onclick="adjustOrderEa(this); return false;" data-adjust="-">1개 빼기</button>
+						<span><input type="text" name="cea" value="1" class="font_Mon" maxlength="4" title="수량" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly /></span>
+						<input type="hidden" name="coption" value="" data-price="0" data-stock="" data-totalprice="189000">
+						<button type="button" id="plus_one" onclick="adjustOrderEa(this); return false;" data-adjust="+">1개 더하기</button>
+				</div>
+				</div>
+				<div class="option_select">
+					<div class="goods_option_list">
+						<p class="tit" style="">주문내역</p>
+						<div class="optionListDiv" style="display: block;"><ul class="selected_box">
+							<li class="title">아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062<a href="javascript:void(0);" onclick="removeOption(this); return false;"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/delete@3x.png" alt="삭제"></a></li>
+							<li class="size">사이즈:8304057</li>	<li class="price"><span>49,000</span>	<a class="btn_coupon" href="javascript:void(0);" onclick="fnLayerfreetitleOpen(1,'SQE001679039' );">쿠폰 다운</a>
+							<div class="amount" style="display: block;">
+							<span>
+							<a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="-"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/minus@3x.png" alt="상품 수량 1 감소"></a>
+							</span>
+							<input type="text" name="cea" value="1" minordqty="1" maxordqty="10" maxlength="4" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly="">
+							<input type="hidden" name="coption" value="SQE001679039:8304057" price="49000" stock="999" totalprice="49000" goodscd="SQE001679039">
+							<span>
+							<a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="+"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/plus@3x.png" alt="상품 수량 1 증가"></a>
+							</span>
+							</div>
+							</li>
+							</ul>
+							<ul class="selected_box">
+							<li class="title">아디다스 아디제로 BK 남성 경량 러닝화 JP6528<a href="javascript:void(0);" onclick="removeOption(this); return false;"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/delete@3x.png" alt="삭제"></a></li>
+							<li class="size">사이즈:8304064</li>	<li class="price"><span>89,000</span>	<div class="amount" style="display: block;">
+							<span>
+							<a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="-"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/minus@3x.png" alt="상품 수량 1 감소"></a>
+							</span>
+							<input type="text" name="cea" value="1" minordqty="1" maxordqty="10" maxlength="4" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly="">
+							<input type="hidden" name="coption" value="SQE001679040:8304064" price="89000" stock="999" totalprice="89000" goodscd="SQE001679040">
+							<span>
+							<a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="+"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/plus@3x.png" alt="상품 수량 1 증가"></a>
+							</span>
+							</div>
+							</li>
+							</ul>
+							</div>
+					</div>
+				</div>
+				<div class="total">
+					<div class="box">합계<div class="price"><strong class="goods_total_price">0</strong></div></div>
+				</div>
+				<div class="detail_buttons">
+					
+						
+						
+							<a href="javascript:void(0);" onclick="fnCheckCartCntAndAddCart();" class="cart" id="cartBtn">장바구니</a>
+							<a href="javascript:void(0);" onclick="addCart('DIRECT',''); return false;" class="buy">바로구매</a>
+						
+						
+					
+				</div>
+				<div class="benefit_coupon">
+					<div class="benefit_coupon_header">
+						<span>쿠폰혜택</span>
+						<a class="go_coupon" href="javascript:void(0);return false;" onclick="cfnGoToPage(_PAGE_COUPON_MAIN);" style="display:none">내 쿠폰함 바로가기</a>
+					</div>
+					<div class="coupons">
+						
+							
+							
+							
 
-			
-				
-				
-            <div class="opt_wrap">
-                <div class="opt_box packopt">
-                    <div class="opt_tit">옵션</div>
-                    <div class="option">
-                        <div class="pack_goods">
-                            <button type="button" class="pack_btn">선택</button>
-                            <ul class="option_list" style="height: 0px; border-bottom: 0px none; transition: height 0.2s; overflow: hidden;">
-                                
-                                    
-                                    <li onclick="getOption(this);" data-goodscd="SQE001679039" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="49000" data-goodsnm="아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062" data-iscoupon="Y" data-iscouponsize="1" data-mastercurrprice="49000" data-issoldout="" class="">
-                                        <input type="radio" name="option" id="option_1">
-                                        <label class="select_option" for="option_1">
-                                            <p>
-                                                
-                                                [아디다스] 아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062
-                                            </p>
-                                            <span class="add">
-                                                <span>
-                                                    +
-                                                    0원
-                                                </span>원 
-                                            </span>
-                                        </label>
-                                    </li>
-                                
-                                    
-                                    <li onclick="getOption(this);" data-goodscd="SQE001679040" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="89000" data-goodsnm="아디다스 아디제로 BK 남성 경량 러닝화 JP6528" data-iscoupon="N" data-iscouponsize="0" data-mastercurrprice="49000" data-issoldout="" class="">
-                                        <input type="radio" name="option" id="option_2">
-                                        <label class="select_option" for="option_2">
-                                            <p>
-                                                
-                                                [아디다스] 아디다스 아디제로 BK 남성 경량 러닝화 JP6528
-                                            </p>
-                                            <span class="add">
-                                                <span>
-                                                    +
-                                                    40,000원
-                                                </span>원 
-                                            </span>
-                                        </label>
-                                    </li>
-                                
-                            </ul>
-                        </div>
-                        <div class="errortxt">옵션을 선택해 주세요</div>
-                    </div>
-                </div>
-                <div class="opt_box poption" style="display: none;">
-                    <div class="opt_tit">사이즈</div>
-                    <div class="option">
-                        <div class="pack_goods">
-                            <button type="button" class="pack_btn">선택</button>
-                            <ul class="uoption" id="opt1" fnkey="choiceOpt" idx="1" minordqty="1" maxordqty="10" iscoupon="N" goodsnm="아디다스 아디제로 BK 남성 경량 러닝화 JP6528" iscouponsize="0" mastercurrprice="49000" style="height: 0px; border-bottom: 0px none; transition: height; overflow-y: auto;">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</ul>
-                        </div>
-                        <div class="errortxt">사이즈를 선택해 주세요</div>
-                    </div>
-                </div>
-            </div>
-        
-    
-
-
-        
-        
-            <div class="item_amount">
-            <span class="tit">세트수량</span>
-            <div class="count_btn">
-                    <button type="button" id="minus_one" onclick="adjustOrderEa(this); return false;" data-adjust="-">1개 빼기</button>
-                    <span><input type="text" name="cea" value="1" class="font_Mon" maxlength="4" title="수량" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly /></span>
-                    <input type="hidden" name="coption" value="" data-price="0" data-stock="" data-totalprice="189000">
-                    <button type="button" id="plus_one" onclick="adjustOrderEa(this); return false;" data-adjust="+">1개 더하기</button>
-            </div>
-            </div>
-				
-			<div class="option_select">
-                <div class="goods_option_list">
-                    <p class="tit" style="">주문내역</p>
-                    <div class="optionListDiv" style="display: block;"><ul class="selected_box">
-                        <li class="title">아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062<a href="javascript:void(0);" onclick="removeOption(this); return false;"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/delete@3x.png" alt="삭제"></a></li>
-                        <li class="size">사이즈:8304057</li>	<li class="price"><span>49,000</span>	<a class="btn_coupon" href="javascript:void(0);" onclick="fnLayerfreetitleOpen(1,'SQE001679039' );">쿠폰 다운</a>
-                        <div class="amount" style="display: block;">
-                        <span>
-                        <a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="-"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/minus@3x.png" alt="상품 수량 1 감소"></a>
-                        </span>
-                        <input type="text" name="cea" value="1" minordqty="1" maxordqty="10" maxlength="4" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly="">
-                        <input type="hidden" name="coption" value="SQE001679039:8304057" price="49000" stock="999" totalprice="49000" goodscd="SQE001679039">
-                        <span>
-                        <a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="+"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/plus@3x.png" alt="상품 수량 1 증가"></a>
-                        </span>
-                        </div>
-                        </li>
-                        </ul>
-                        <ul class="selected_box">
-                        <li class="title">아디다스 아디제로 BK 남성 경량 러닝화 JP6528<a href="javascript:void(0);" onclick="removeOption(this); return false;"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/delete@3x.png" alt="삭제"></a></li>
-                        <li class="size">사이즈:8304064</li>	<li class="price"><span>89,000</span>	<div class="amount" style="display: block;">
-                        <span>
-                        <a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="-"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/minus@3x.png" alt="상품 수량 1 감소"></a>
-                        </span>
-                        <input type="text" name="cea" value="1" minordqty="1" maxordqty="10" maxlength="4" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly="">
-                        <input type="hidden" name="coption" value="SQE001679040:8304064" price="89000" stock="999" totalprice="89000" goodscd="SQE001679040">
-                        <span>
-                        <a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="+"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/plus@3x.png" alt="상품 수량 1 증가"></a>
-                        </span>
-                        </div>
-                        </li>
-                        </ul>
-                        </div>
-                </div>
-            </div>
-
-			<div class="total">
-				<div class="box">합계<div class="price"><strong class="goods_total_price">0</strong></div></div>
+						<div class="coupon coupon_CPN15350 " onclick="issueCoupon('CPN15350', '10'); return false;">
+				<div class="coupon_img"><img src="/ux/imgs/mypage/cpn_popup_btn@3x.png" alt="다운로드"></div>
+							<div class="coupon_name">0825_TEST 상품 쿠폰 </div>
+							<div class="coupon_avail_eddt">~2025/11/26</div>
+							<div class="coupon_down_img">
+								<input type="hidden" name="goodsCd" value="">
+								<img src="/ux/imgs/goods/icon_download@3x.png" alt="다운로드" style="width: 15px;">
+				</div>
+						</div>
+						
+					</div>
+				</div>
 			</div>
-			<div class="detail_buttons">
-				
-					
-					
-						<a href="javascript:void(0);" onclick="fnCheckCartCntAndAddCart();" class="cart" id="cartBtn">장바구니</a>
-						<a href="javascript:void(0);" onclick="addCart('DIRECT',''); return false;" class="buy">바로구매</a>
-					
-					
-				
-			</div>
-
-			
-
+			<!--//워드앤코드 영역 묶음-->
 			<div class="benefit" id="benefit">
 				<div class="tit">스퀘어몰 쇼핑 꿀팁!</div>
 				<ul>
@@ -3573,9 +3565,6 @@ $('.del_all').on('click', function(){
 		<div class="item_option_area">
 			<div class="option_area">
 				<!-- 이기현 : 상품옵션과 구매버튼이 구매 혜택 위쪽으로 -->
-				
-					
-					
                 <div class="opt_wrap">
 					<div class="opt_box packopt">
                         <h3>니트카라 중경량점퍼 DSW81JN60P</h3>
@@ -3584,9 +3573,7 @@ $('.del_all').on('click', function(){
 							<div class="pack_goods">
 								<button type="button" class="pack_btn">아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062</button>
 								<ul class="option_list" style="height: 0px; border-bottom: 0px none; transition: height 0.2s; overflow: hidden;">
-									
-										
-										<li onclick="getOption(this);" data-goodscd="SQE001679039" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="49000" data-goodsnm="아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062" data-iscoupon="Y" data-iscouponsize="1" data-mastercurrprice="49000" data-issoldout="" class="active">
+										<li data-goodscd="SQE001679039" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="49000" data-goodsnm="아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062" data-iscoupon="Y" data-iscouponsize="1" data-mastercurrprice="49000" data-issoldout="" class="active">
 											<input type="radio" name="option" id="option_1">
 											<label class="select_option" for="option_1">
 												<p>
@@ -3603,7 +3590,7 @@ $('.del_all').on('click', function(){
 										</li>
 									
 										
-										<li onclick="getOption(this);" data-goodscd="SQE001679040" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="89000" data-goodsnm="아디다스 아디제로 BK 남성 경량 러닝화 JP6528" data-iscoupon="N" data-iscouponsize="0" data-mastercurrprice="49000" data-issoldout="" class="">
+										<li data-goodscd="SQE001679040" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="89000" data-goodsnm="아디다스 아디제로 BK 남성 경량 러닝화 JP6528" data-iscoupon="N" data-iscouponsize="0" data-mastercurrprice="49000" data-issoldout="" class="">
 											<input type="radio" name="option" id="option_2">
 											<label class="select_option" for="option_2">
 												<p>
@@ -3624,7 +3611,7 @@ $('.del_all').on('click', function(){
 							<div class="errortxt">옵션을 선택해 주세요</div>
 						</div>
 					</div>
-					<div class="opt_box poption" style="display: flex;">
+					<div class="opt_box poption" style="display: none;">
                         <h3>니트카라 중경량점퍼 DSW81JN60P</h3>
 						<div class="opt_tit">사이즈</div>
 						<div class="option">
@@ -3632,21 +3619,21 @@ $('.del_all').on('click', function(){
 								<button type="button" class="pack_btn">선택</button>
 								<ul class="uoption" id="opt1" fnkey="choiceOpt" idx="1" minordqty="1" maxordqty="10" iscoupon="Y" goodsnm="아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062" iscouponsize="1" mastercurrprice="49000" style="height: 0px; border-bottom: 0px none; transition: height; overflow-y: auto;">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+									<li data-goodscd="SQE001679039" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="49000" data-goodsnm="아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062" data-iscoupon="Y" data-iscouponsize="1" data-mastercurrprice="49000" data-issoldout="" class="active">
+										<input type="radio" name="option" id="option_1">
+										<label class="select_option" for="option_1">
+											<p>
+												
+												[아디다스] 아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062
+											</p>
+											<span class="add">
+												<span>
+													+
+													0원
+												</span>원 
+											</span>
+										</label>
+									</li>
 <li onclick="choiceOptionNew(this)"><input type="hidden" name="optval" value="SQE001679039:8304056" goodscd="SQE001679039" minordqty="1" maxordqty="10" price="49000" sizecd="8304056" stockqty="999" soldoutyn="N" mastercurrprice="49000">
 <label>
 <p>90</p>
@@ -3682,59 +3669,53 @@ $('.del_all').on('click', function(){
 					</div>
 				</div>
 				
-
-				
-
-				
-					
-					
-					<div class="item_amount">
-						<span class="tit">세트수량</span>
-						<div class="count_btn">
-							<button type="button" id="minus_one" onclick="adjustOrderEa(this); return false;" data-adjust="-">1개 빼기</button>
-							<span>
-								<input type="text" name="cea" value="1" class="font_Mon" maxlength="4" title="수량" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly />
-							</span>
-							<input type="hidden" name="coption" value="" data-price="0" data-stock="" data-totalprice="189000">
-							<button type="button" id="plus_one" onclick="adjustOrderEa(this); return false;" data-adjust="+">1개 더하기</button>
-						</div>
+				<div class="item_amount">
+					<span class="tit">세트수량</span>
+					<div class="count_btn">
+						<button type="button" id="minus_one" onclick="adjustOrderEa(this); return false;" data-adjust="-">1개 빼기</button>
+						<span>
+							<input type="text" name="cea" value="1" class="font_Mon" maxlength="4" title="수량" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly />
+						</span>
+						<input type="hidden" name="coption" value="" data-price="0" data-stock="" data-totalprice="189000">
+						<button type="button" id="plus_one" onclick="adjustOrderEa(this); return false;" data-adjust="+">1개 더하기</button>
 					</div>
-					
-                    <div class="option_select">
-                        <div class="goods_option_list">
-                            <p class="tit" style="">주문내역</p>
-                            <div class="optionListDiv" style="display: block;"><ul class="selected_box">
-                                <li class="title">아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062<a href="javascript:void(0);" onclick="removeOption(this); return false;"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/delete@3x.png" alt="삭제"></a></li>
-                                <li class="size">사이즈:8304057</li>	<li class="price"><span>49,000</span>	<a class="btn_coupon" href="javascript:void(0);" onclick="fnLayerfreetitleOpen(1,'SQE001679039' );">쿠폰 다운</a>
-                                <div class="amount" style="display: block;">
-                                    <span>
-                                        <a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="-"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/minus@3x.png" alt="상품 수량 1 감소"></a>
-                                    </span>
-                                    <input type="text" name="cea" value="1" minordqty="1" maxordqty="10" maxlength="4" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly="">
-                                    <input type="hidden" name="coption" value="SQE001679039:8304057" price="49000" stock="999" totalprice="49000" goodscd="SQE001679039">
-                                    <span>
-                                        <a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="+"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/plus@3x.png" alt="상품 수량 1 증가"></a>
-                                    </span>
-                                </div>
-                                </li>
-                                </ul>
-                                <ul class="selected_box">
-                                <li class="title">아디다스 아디제로 BK 남성 경량 러닝화 JP6528<a href="javascript:void(0);" onclick="removeOption(this); return false;"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/delete@3x.png" alt="삭제"></a></li>
-                                <li class="size">사이즈:8304064</li>	<li class="price"><span>89,000</span>	<div class="amount" style="display: block;">
-                                    <span>
-                                        <a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="-"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/minus@3x.png" alt="상품 수량 1 감소"></a>
-                                    </span>
-                                    <input type="text" name="cea" value="1" minordqty="1" maxordqty="10" maxlength="4" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly="">
-                                    <input type="hidden" name="coption" value="SQE001679040:8304064" price="89000" stock="999" totalprice="89000" goodscd="SQE001679040">
-                                    <span>
-                                        <a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="+"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/plus@3x.png" alt="상품 수량 1 증가"></a>
-                                    </span>
-                                </div>
-                                </li>
-                                </ul>
-                                </div>
-                        </div>
-                    </div>
+				</div>
+				
+				<div class="option_select">
+					<div class="goods_option_list">
+						<p class="tit" style="">주문내역</p>
+						<div class="optionListDiv" style="display: block;"><ul class="selected_box">
+							<li class="title">아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062<a href="javascript:void(0);" onclick="removeOption(this); return false;"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/delete@3x.png" alt="삭제"></a></li>
+							<li class="size">사이즈:8304057</li>	<li class="price"><span>49,000</span>	<a class="btn_coupon" href="javascript:void(0);" onclick="fnLayerfreetitleOpen(1,'SQE001679039' );">쿠폰 다운</a>
+							<div class="amount" style="display: block;">
+								<span>
+									<a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="-"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/minus@3x.png" alt="상품 수량 1 감소"></a>
+								</span>
+								<input type="text" name="cea" value="1" minordqty="1" maxordqty="10" maxlength="4" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly="">
+								<input type="hidden" name="coption" value="SQE001679039:8304057" price="49000" stock="999" totalprice="49000" goodscd="SQE001679039">
+								<span>
+									<a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="+"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/plus@3x.png" alt="상품 수량 1 증가"></a>
+								</span>
+							</div>
+							</li>
+							</ul>
+							<ul class="selected_box">
+							<li class="title">아디다스 아디제로 BK 남성 경량 러닝화 JP6528<a href="javascript:void(0);" onclick="removeOption(this); return false;"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/delete@3x.png" alt="삭제"></a></li>
+							<li class="size">사이즈:8304064</li>	<li class="price"><span>89,000</span>	<div class="amount" style="display: block;">
+								<span>
+									<a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="-"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/minus@3x.png" alt="상품 수량 1 감소"></a>
+								</span>
+								<input type="text" name="cea" value="1" minordqty="1" maxordqty="10" maxlength="4" onkeypress="blockNotNumber(event)" onkeyup="onlyInt(this)" readonly="">
+								<input type="hidden" name="coption" value="SQE001679040:8304064" price="89000" stock="999" totalprice="89000" goodscd="SQE001679040">
+								<span>
+									<a href="javascript:void(0);" onclick="adjustOrderEa(this); return false;" adjust="+"><img src="//pre.thesquaremall.co.kr/ux/imgs/web/global/plus@3x.png" alt="상품 수량 1 증가"></a>
+								</span>
+							</div>
+							</li>
+							</ul>
+							</div>
+					</div>
+				</div>
 
 				<div class="total">
 					<div class="box">합계<div class="price"><strong class="goods_total_price">0</strong></div></div>
@@ -3748,6 +3729,29 @@ $('.del_all').on('click', function(){
 						
 						
 					
+				</div>
+
+				<div class="benefit_coupon">
+					<div class="benefit_coupon_header">
+						<span>쿠폰혜택</span>
+						<a class="go_coupon" href="javascript:void(0);return false;" onclick="cfnGoToPage(_PAGE_COUPON_MAIN);" style="display:none">내 쿠폰함 바로가기</a>
+					</div>
+					<div class="coupons">
+						
+							
+							
+							
+	
+						<div class="coupon coupon_CPN15350 " onclick="issueCoupon('CPN15350', '10'); return false;">
+							<div class="coupon_img"><img src="/ux/imgs/mypage/cpn_popup_btn@3x.png" alt="다운로드"></div>
+								<div class="coupon_name">0825_TEST 상품 쿠폰 </div>
+								<div class="coupon_avail_eddt">~2025/11/26</div>
+								<div class="coupon_down_img">
+									<input type="hidden" name="goodsCd" value="">
+									<img src="/ux/imgs/goods/icon_download@3x.png" alt="다운로드" style="width: 15px;">
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -6084,4 +6088,8 @@ a.src=b;a.async="true";d.appendChild(a)}function dsp_load_rtg(b){dsp_loadrtgJS((
 
 
     </script>
+
+	<script>
+		
+	</script>
 </html>

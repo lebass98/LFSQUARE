@@ -4058,7 +4058,7 @@ $('.del_all').on('click', function(){
 	});
 	 */
 	$(document).ready(function(){
-		$(".full_title").html('장바구니');
+		$(".full_title").html('옵션변경');
 		$("#header").addClass('icon_b shadow bg_w');
 
 		var tabBtn = $(".tab_large li");
@@ -5006,54 +5006,56 @@ a.src=b;a.async="true";d.appendChild(a)}function dsp_load_rtg(b){dsp_loadrtgJS((
                                     <span class="option">ZZ / BLACK|FREE</span>
                                 </div>
                             </div>
-                            
-                            <div class="opt_wrap">
-                                <div class="opt_box packopt">
-                                    <div class="opt_tit">옵션</div>
-                                    <div class="option">
-                                        <div class="pack_goods">
-                                            <button type="button" class="pack_btn on">선택</button>
-                                            <ul class="option_list" style="height: 165px; border-bottom: 1px solid rgb(214, 214, 214); transition: height 0.2s; overflow: hidden;">
-                                                
-                                                    
-                                                    <li onclick="getOption(this);" data-goodscd="SQE001679039" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="49000" data-goodsnm="아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062" data-iscoupon="Y" data-iscouponsize="1" data-mastercurrprice="49000" data-issoldout="">
-                                                        <input type="radio" name="option" id="option_1">
-                                                        <label class="select_option" for="option_1">
-                                                            <p>
-                                                                
-                                                                BLACK|FREE
-                                                            </p>
-                                                        </label>
-                                                    </li>
-                                                
-                                                    
-                                                    <li onclick="getOption(this);" data-goodscd="SQE001679040" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="89000" data-goodsnm="아디다스 아디제로 BK 남성 경량 러닝화 JP6528" data-iscoupon="N" data-iscouponsize="0" data-mastercurrprice="49000" data-issoldout="">
-                                                        <input type="radio" name="option" id="option_2">
-                                                        <label class="select_option" for="option_2">
-                                                            <p>
-                                                                
-                                                                BLACK|FREE
-                                                            </p>
-                                                        </label>
-                                                    </li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="errortxt">옵션을 선택해 주세요</div>
-                                    </div>
-                                </div>
-                                <div class="opt_box poption">
-                                    <div class="opt_tit">사이즈</div>
-                                    <div class="option">
-                                        <div class="pack_goods">
-                                            <button type="button" class="pack_btn">선택</button>
-                                            <ul class="uoption" id="opt1" fnkey="choiceOpt" idx="1" minordqty="" maxordqty="" iscoupon="" style="height: 0px; border-bottom: 0px none; transition: height;"></ul>
-                                        </div>
-                                        <div class="errortxt">사이즈를 선택해 주세요</div>
-                                    </div>
-                                </div>
-                            </div>
-                                
+							<!--워드앤코드 영역 변경-->
+                            <div class="option-area">
+								<div class="opt_wrap">
+									<div class="opt_box packopt">
+										<div class="opt_tit">옵션</div>
+										<div class="option">
+											<div class="pack_goods">
+												<button type="button" class="pack_btn">선택</button>
+												<ul class="option_list" style="height: 0px; border-bottom: 0px none; transition: height 0.2s; overflow: hidden;">
+													
+														
+														<li data-goodscd="SQE001679039" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="49000" data-goodsnm="아디다스 티로25 컴피티션 축구 풋살 반바지 JG1062" data-iscoupon="Y" data-iscouponsize="1" data-mastercurrprice="49000" data-issoldout="">
+															<input type="radio" name="option" id="option_1">
+															<label class="select_option" for="option_1">
+																<p>
+																	
+																	BLACK|FREE
+																</p>
+															</label>
+														</li>
+													
+														
+														<li data-goodscd="SQE001679040" data-goodstype="D" data-minordqty="1" data-maxordqty="10" data-stock="999" data-price="89000" data-goodsnm="아디다스 아디제로 BK 남성 경량 러닝화 JP6528" data-iscoupon="N" data-iscouponsize="0" data-mastercurrprice="49000" data-issoldout="">
+															<input type="radio" name="option" id="option_2">
+															<label class="select_option" for="option_2">
+																<p>
+																	
+																	BLACK|FREE
+																</p>
+															</label>
+														</li>
+													
+												</ul>
+											</div>
+											<div class="errortxt">옵션을 선택해 주세요</div>
+										</div>
+									</div>
+									<div class="opt_box poption" style="display: none;">
+										<div class="opt_tit">사이즈</div>
+										<div class="option">
+											<div class="pack_goods">
+												<button type="button" class="pack_btn">선택</button>
+												<ul class="uoption" id="opt1" fnkey="choiceOpt" idx="1" minordqty="" maxordqty="" iscoupon="" style="height: 0px; border-bottom: 0px none; transition: height;"></ul>
+											</div>
+											<div class="errortxt">사이즈를 선택해 주세요</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                            <!--//워드앤코드 영역 변경-->   
                             
             
             

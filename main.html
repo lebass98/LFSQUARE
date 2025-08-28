@@ -23530,36 +23530,43 @@ var real_core=function(){return{onload:function(p){var le='(';var ri=')';var e=e
 
                     <!-- 오늘 날짜 구하기 -->
 
-
-
-
-
-
-
-
-
                     <li>
                       <a href="javascript:void(0)">
-                        <span><em>LIVE</em>07.25 (금) 10:00</span>
+                        <span><em>LIVE</em>5.28(오늘) 10:00</span>
                       </a>
                     </li>
 
                     <!-- 오늘 날짜 구하기 -->
-
-
-
-
-
-
-
-
-
-                    <li>
+                    <li class="active">
                       <a href="javascript:void(0)">
-                        <span><em>LIVE</em>07.28 (월) 09:00</span>
+                        <span><em>LIVE</em>05.28(오늘) 18:00</span>
                       </a>
                     </li>
-
+                    <li>
+                      <a href="javascript:void(0)">
+                        <span><em>LIVE</em>05.29(목) 10:00</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <span><em>LIVE</em>05.29(목) 18:30</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <span><em>LIVE</em>05.30(금) 10:00</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <span><em>LIVE</em>05.30(토) 18:30</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                        <span><em>LIVE</em>05.31(토) 10:00</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
 
@@ -23571,8 +23578,156 @@ var real_core=function(){return{onload:function(p){var le='(';var ri=')';var e=e
 
 
 
+                <!--워드앤코드 작업-->
+                <!-- 클래스에 따라 style 처리
+                방송전 : prev
+                방송진행중 : ing 
+                방송후 : next
+                -->
+                <!--
+                <div class="live-content-box prev">
+                  <script>
+                    //라이브 방송 시작 경과 시분초 노출
+                    const countDownTimer1 = function (id, date) {
+                      date = date.replace(/-/g, "/");
+                      var _vDate = new Date(date); // 라이브시간
+                      var _second = 1000;
+                      var _minute = _second * 60;
+                      var _hour = _minute * 60;
+                      var _day = _hour * 24;
+                      var timer;
 
-                <div class="live-content-left">
+                      function showRemaining() {
+                        var now = new Date();
+                        var distDt = now - _vDate;
+
+                        var days = Math.floor(distDt / _day);
+                        var hours = Math.floor((distDt % _day) / _hour);
+                        var minutes = Math.floor((distDt % _hour) / _minute);
+                        var seconds = Math.floor((distDt % _minute) / _second);
+
+                        $('#' + id).text(("0" + hours).slice(-2) + ':' + ("0" + minutes).slice(-2) + ':' + ("0" + seconds).slice(-2));
+
+                        // 종료까지(?) 타이머 노출
+                        // 라이브 방송 시간부터 1시간까지만 노출
+                        // if (timer && (days > 0 || hours >= 1)) {
+                        // 	clearInterval(timer);
+                        // 	$('#' + id).text("");
+                        // 	$('#' + id).hide();
+                        // }
+                      }
+
+                      timer = setInterval(showRemaining, 1000);
+                    }
+                    countDownTimer1('live_countdown1', '2025-08-08 10:00:00');
+                  </script>
+                  <div class="live-content-inner">
+                    
+                    <div class="live-content-inner-img">
+                      <div class="live-content-inner-title">
+                        <p>
+                          <span>05.29(목)</span><strong>10:00</strong>
+                        </p>
+                      </div>
+                      <img src="https://img.thesquaremall.co.kr/display/contents/202508/CONTENS_20250807152005_01.png"
+                        alt="라이브 방송 이미지" />
+                    </div>
+                    <div class="live-content-inner-txt">
+                      <div class="live-content-inner-title">
+                        <p><strong>LIVE</strong></p>
+                      </div>
+                      <p class="live-brand">테스트</p>
+                      <h4 class="live-pr-title"><span>테스트</span></h4>
+                      <div class="live-go-btn">
+                        <a class="btn btn-w" href="javascript:void(0);" onclick="cfnGoToPage('/planning/detail/form?planSq=6664');">LIVE
+                          알림받기<em></em></a>
+                        <a class="btn btn-w on" href="javascript:void(0);" onclick="cfnGoToPage('/planning/detail/form?planSq=6664');">LIVE
+                          알림받는 중<em></em></a>
+                      </div>
+                      <div class="related-pr">
+                        <div class="related-pr-inner">
+                          <ul>
+                              <li>
+                                <a href="javascript:void(0);" class="LIVE_139_0_0_GOODS_SQ000000396" onclick="cfnGoToGoodsDetail('SQ000000396', 'IN01_07', '139');">
+                                  <dl>
+                                    <dt>
+                                          <img src="https://cdn-square.bizhost.kr/files/goods/3162408/1752983405_0.jpg" alt="" onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';">
+                                    </dt>
+                                    <dd>
+                                      <p class="live_p_name">[제옥스] 여성 6센치 통굽 메리제인 2종 8TMCM65</p>143,000원
+                                      
+                                        <span class="per font_Mon">40%</span>
+                                      
+                                    </dd>
+                                  </dl>
+                                </a>
+                              </li>
+                              
+                            
+                              
+                              <li>
+                                <a href="javascript:void(0);" class="LIVE_139_0_1_GOODS_SQ000000395" onclick="cfnGoToGoodsDetail('SQ000000395', 'IN01_07', '139');">
+                                  <dl>
+                                    <dt>
+                                    
+                                    
+                                      
+                                        
+                                          <img src="https://cdn-square.bizhost.kr/files/goods/3162405/1752982707_0.jpg" alt="" onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';">
+                                        
+                                        
+                                      
+                                    
+                                    
+                                    </dt>
+                                    <dd>
+                                      <p class="live_p_name">[제옥스] 여성 6센치 통굽 더비슈즈 2종 8TMCM45</p>155,000원
+                                      
+                                        <span class="per font_Mon">40%</span>
+                                      
+                                    </dd>
+                                  </dl>
+                                </a>
+                              </li>
+                              
+                            
+                              
+                              <li>
+                                <a href="javascript:void(0);" class="LIVE_139_0_2_GOODS_SQ000000371" onclick="cfnGoToGoodsDetail('SQ000000371', 'IN01_07', '139');">
+                                  <dl>
+                                    <dt>
+                                    
+                                    
+                                      
+                                        
+                                          <img src="https://cdn-square.bizhost.kr/files/goods/3162406/1752982943_0.jpg" alt="" onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';">
+                                        
+                                        
+                                      
+                                    
+                                    
+                                    </dt>
+                                    <dd>
+                                      <p class="live_p_name">[제옥스] 여성 6센치 통굽 더비슈즈 2종 8TMCM55</p>155,000원
+                                      
+                                        <span class="per font_Mon">40%</span>
+                                      
+                                    </dd>
+                                  </dl>
+                                </a>
+                              </li>
+                              
+                            
+                              
+                            
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                -->
+                <div class="live-content-box ing">
                   <script>
                     //라이브 방송 시작 경과 시분초 노출
                     const countDownTimer0 = function (id, date) {
@@ -23625,33 +23780,92 @@ var real_core=function(){return{onload:function(p){var le='(';var ri=')';var e=e
                       <p class="live-brand">250728라이브방송</p>
                       <h4 class="live-pr-title"><span>250728라이브방송2</span></h4>
                       <div class="live-go-btn">
-
-
-
-
-
-
-
-
-                        <a href="javascript:void(0);" onclick="cfnGoToPage('/planning/detail/form?planSq=6660');">LIVE
-                          보러가기</a>
-
-
-
-
+                        <a class="btn btn-b" href="javascript:void(0);" onclick="cfnGoToPage('/planning/detail/form?planSq=6660');">LIVE
+                          보기</a>
                       </div>
-
+                      <div class="related-pr">
+                        <div class="related-pr-inner">
+                          <ul>
+                              <li>
+                                <a href="javascript:void(0);" class="LIVE_139_0_0_GOODS_SQ000000396" onclick="cfnGoToGoodsDetail('SQ000000396', 'IN01_07', '139');">
+                                  <dl>
+                                    <dt>
+                                          <img src="https://cdn-square.bizhost.kr/files/goods/3162408/1752983405_0.jpg" alt="" onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';">
+                                    </dt>
+                                    <dd>
+                                      <p class="live_p_name">[제옥스] 여성 6센치 통굽 메리제인 2종 8TMCM65</p>143,000원
+                                      
+                                        <span class="per font_Mon">40%</span>
+                                      
+                                    </dd>
+                                  </dl>
+                                </a>
+                              </li>
+                              
+                            
+                              
+                              <li>
+                                <a href="javascript:void(0);" class="LIVE_139_0_1_GOODS_SQ000000395" onclick="cfnGoToGoodsDetail('SQ000000395', 'IN01_07', '139');">
+                                  <dl>
+                                    <dt>
+                                    
+                                    
+                                      
+                                        
+                                          <img src="https://cdn-square.bizhost.kr/files/goods/3162405/1752982707_0.jpg" alt="" onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';">
+                                        
+                                        
+                                      
+                                    
+                                    
+                                    </dt>
+                                    <dd>
+                                      <p class="live_p_name">[제옥스] 여성 6센치 통굽 더비슈즈 2종 8TMCM45</p>155,000원
+                                      
+                                        <span class="per font_Mon">40%</span>
+                                      
+                                    </dd>
+                                  </dl>
+                                </a>
+                              </li>
+                              
+                            
+                              
+                              <li>
+                                <a href="javascript:void(0);" class="LIVE_139_0_2_GOODS_SQ000000371" onclick="cfnGoToGoodsDetail('SQ000000371', 'IN01_07', '139');">
+                                  <dl>
+                                    <dt>
+                                    
+                                    
+                                      
+                                        
+                                          <img src="https://cdn-square.bizhost.kr/files/goods/3162406/1752982943_0.jpg" alt="" onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';">
+                                        
+                                        
+                                      
+                                    
+                                    
+                                    </dt>
+                                    <dd>
+                                      <p class="live_p_name">[제옥스] 여성 6센치 통굽 더비슈즈 2종 8TMCM55</p>155,000원
+                                      
+                                        <span class="per font_Mon">40%</span>
+                                      
+                                    </dd>
+                                  </dl>
+                                </a>
+                              </li>
+                              
+                            
+                              
+                            
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-
-
-
-
-
-
-                <div class="live-content-left">
+                <div class="live-content-box next">
                   <script>
                     //라이브 방송 시작 경과 시분초 노출
                     const countDownTimer1 = function (id, date) {
@@ -23688,42 +23902,109 @@ var real_core=function(){return{onload:function(p){var le='(';var ri=')';var e=e
                     countDownTimer1('live_countdown1', '2025-08-08 10:00:00');
                   </script>
                   <div class="live-content-inner">
+                    
                     <div class="live-content-inner-img">
+                      <div class="live-content-inner-title">
+                        <p>
+                          <span>05.26(목)</span><strong>15만명 시청</strong>
+                        </p>
+                      </div>
                       <img src="https://img.thesquaremall.co.kr/display/contents/202508/CONTENS_20250807152005_01.png"
                         alt="라이브 방송 이미지" />
                     </div>
                     <div class="live-content-inner-txt">
                       <div class="live-content-inner-title">
-
-
-                        <p><strong>LIVE</strong><span id="live_countdown1">00:00:00</span></p>
-
-
-
+                        <p><strong>LIVE</strong></p>
                       </div>
                       <p class="live-brand">테스트</p>
                       <h4 class="live-pr-title"><span>테스트</span></h4>
                       <div class="live-go-btn">
-
-
-
-
-
-
-
-
-                        <a href="javascript:void(0);" onclick="cfnGoToPage('/planning/detail/form?planSq=6664');">LIVE
-                          보러가기</a>
-
-
-
-
+                        <a class="btn btn-b" href="javascript:void(0);">LIVE
+                          다시보기</a>
                       </div>
-
+                      <div class="related-pr">
+                        <div class="related-pr-inner">
+                          <ul>
+                              <li>
+                                <a href="javascript:void(0);" class="LIVE_139_0_0_GOODS_SQ000000396" onclick="cfnGoToGoodsDetail('SQ000000396', 'IN01_07', '139');">
+                                  <dl>
+                                    <dt>
+                                          <img src="https://cdn-square.bizhost.kr/files/goods/3162408/1752983405_0.jpg" alt="" onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';">
+                                    </dt>
+                                    <dd>
+                                      <p class="live_p_name">[제옥스] 여성 6센치 통굽 메리제인 2종 8TMCM65</p>143,000원
+                                      
+                                        <span class="per font_Mon">40%</span>
+                                      
+                                    </dd>
+                                  </dl>
+                                </a>
+                              </li>
+                              
+                            
+                              
+                              <li>
+                                <a href="javascript:void(0);" class="LIVE_139_0_1_GOODS_SQ000000395" onclick="cfnGoToGoodsDetail('SQ000000395', 'IN01_07', '139');">
+                                  <dl>
+                                    <dt>
+                                    
+                                    
+                                      
+                                        
+                                          <img src="https://cdn-square.bizhost.kr/files/goods/3162405/1752982707_0.jpg" alt="" onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';">
+                                        
+                                        
+                                      
+                                    
+                                    
+                                    </dt>
+                                    <dd>
+                                      <p class="live_p_name">[제옥스] 여성 6센치 통굽 더비슈즈 2종 8TMCM45</p>155,000원
+                                      
+                                        <span class="per font_Mon">40%</span>
+                                      
+                                    </dd>
+                                  </dl>
+                                </a>
+                              </li>
+                              
+                            
+                              
+                              <li>
+                                <a href="javascript:void(0);" class="LIVE_139_0_2_GOODS_SQ000000371" onclick="cfnGoToGoodsDetail('SQ000000371', 'IN01_07', '139');">
+                                  <dl>
+                                    <dt>
+                                    
+                                    
+                                      
+                                        
+                                          <img src="https://cdn-square.bizhost.kr/files/goods/3162406/1752982943_0.jpg" alt="" onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';">
+                                        
+                                        
+                                      
+                                    
+                                    
+                                    </dt>
+                                    <dd>
+                                      <p class="live_p_name">[제옥스] 여성 6센치 통굽 더비슈즈 2종 8TMCM55</p>155,000원
+                                      
+                                        <span class="per font_Mon">40%</span>
+                                      
+                                    </dd>
+                                  </dl>
+                                </a>
+                              </li>
+                              
+                            
+                              
+                            
+                          </ul>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-
+                <!--//워드앤코드 작업-->
 
                 <a href="https://pre.thesquaremall.co.kr/planning/live/main/form" class="more-live-btn">라이브 방송
                   더보기<em><img src="https://pre.thesquaremall.co.kr/ux/images/common/more-live-icn.svg" /></em></a>
@@ -23788,20 +24069,8 @@ var real_core=function(){return{onload:function(p){var le='(';var ri=')';var e=e
                           onclick="ui.ajaxpopup.open('/goods/popup/layerGoodsDealSelect?goodsCd=SQE001036790')">장바구니
                           담기</button>
                         <a href="javascript:void(0);" onclick="cfnGoToGoodsDetail('SQE001036790', 'IN01_09', '204');">
-
-
-
-
-
-
-
                           <img src="https://img.thesquaremall.co.kr/goods/removebg_main/1659338_M1.jpg" alt=""
                             onerror="this.src='//pre.thesquaremall.co.kr/ux/imgs/global/no.gif';" />
-
-
-
-
-
                         </a>
                       </div>
                       <div class="txt-box">
